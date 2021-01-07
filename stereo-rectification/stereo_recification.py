@@ -48,20 +48,24 @@ K2 = np.array([[102, 0, 198],
               [0, 0, 1]])
 
 K2inv = np.linalg.inv(K2)
-t12_1 = np.array([0.5, 0.01, 0.01])
-theta = 0.5 / 180. * math.pi
-c = math.cos(theta)
-s = math.sin(theta)
-R12 = np.array([[1, 0, 0],
-                [0, c, -s],
-                [0, s, c]]).dot(
-                    np.array([[c, s, 0],
-                              [-s, c, 0],
-                              [0, 0, 1]])).dot(
-                                  np.array([[c, -s, 0],
-                                            [s, c, 0],
-                                            [0, 0, 1]]))
+
 P0 = np.array([1, 1, 10])
+
+t12_1 = np.array([0.5, 0.01, 0.01])
+r = 3* math.pi / 180
+p = -60 * math.pi / 180
+y = 3 * math.pi / 180
+c = np.cos([r, p, y])
+s = np.sin([r, p, y])
+R12 = np.array([[1, 0, 0],
+                [0, c[0], -s[0]],
+                [0, s[0], c[0]]]).dot(
+                    np.array([[c[1], 0, s[1]],
+                              [0,      1,  0],
+                              [-s[1],    0,  c[1]]])).dot(
+                                  np.array([[c[2], -s[2], 0],
+                                            [s[2], c[2], 0],
+                                            [0, 0, 1]]))
 
 uv1 = K1.dot(P0)
 normalized_uv1 = uv1 / uv1[2]
