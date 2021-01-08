@@ -52,9 +52,9 @@ K2inv = np.linalg.inv(K2)
 P0 = np.array([1, 1, 10])
 
 t12_1 = np.array([0.5, 0.01, 0.01])
-r = 3* math.pi / 180
-p = -60 * math.pi / 180
-y = 3 * math.pi / 180
+r = 1* math.pi / 180
+p = 1 * math.pi / 180
+y = 1 * math.pi / 180
 c = np.cos([r, p, y])
 s = np.sin([r, p, y])
 R12 = np.array([[1, 0, 0],
